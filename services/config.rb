@@ -9,6 +9,11 @@ coreo_aws_vpc_vpc "${VPC_NAME}" do
   internet_gateway true
 end
 
+coreo_aws_vpc_subnet "${PRIVATE_SUBNET_NAME}" do
+  action :sustain
+  vpc "${VPC_NAME}"
+  percent_of_vpc_allocated 25
+end
 
 coreo_aws_ec2_securityGroups "${JENKINS_NAME}" do
   action :sustain
